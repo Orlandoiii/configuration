@@ -51,6 +51,8 @@ func LoadFromJsonFile(activeWatcher bool, filePaths ...string) error {
 		return err
 	}
 
+	appConfig = &AppConfig{conf, true}
+
 	if activeWatcher {
 
 		err = appConfig.Config.watchFiles()
@@ -59,8 +61,6 @@ func LoadFromJsonFile(activeWatcher bool, filePaths ...string) error {
 			return err
 		}
 	}
-
-	appConfig = &AppConfig{conf, true}
 
 	return nil
 }
